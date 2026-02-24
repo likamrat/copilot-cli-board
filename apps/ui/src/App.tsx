@@ -262,7 +262,8 @@ export default function App() {
         }
         return prev;
       });
-    }, [])
+    }, []),
+    loadBoard,
   );
 
   const allLabels = board?.labels ?? [];

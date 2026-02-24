@@ -28,3 +28,13 @@ You have access to a local Kanban board via `kanban_*` MCP tools. **Always use i
 - **Always append events** when moving to Review and Done. The event payload should describe what was accomplished.
 - **Always record provenance** after completing work: call `kanban_record_skill_use` for skills and `kanban_record_instruction_use` for instructions you followed.
 - **Review means verify.** Do not move to Review until you have tested or built the code. Do not move to Done until you have confirmed the feature actually works.
+
+## Verification rules
+
+- **Before moving ANY card to Done**, you MUST verify each feature works:
+  1. Run `tsc --noEmit` in the relevant app directory
+  2. Visually confirm the feature is functional (check that the UI renders, the API responds, etc.)
+  3. If you cannot verify, leave the card in Review
+- **Never write "User will handle verification"** or anything similar. YOU must verify.
+- **Work on one card at a time.** Fully complete and verify one feature before starting the next. Do not move two cards in parallel.
+- **Never move a card backwards.** Once a card reaches Done, do not move it back to Review. If there is a problem, create a new bugfix card.

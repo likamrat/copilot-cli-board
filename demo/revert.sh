@@ -6,7 +6,7 @@ cd "$(dirname "$0")/.."
 echo "Reverting dogfood demo..."
 
 # Restore backed-up files
-for f in apps/ui/src/App.tsx apps/server/src/routes.ts apps/ui/src/api.ts apps/ui/src/components/KanbanBoard.tsx; do
+for f in apps/ui/src/App.tsx apps/server/src/routes.ts apps/ui/src/api.ts apps/ui/src/components/KanbanBoard.tsx apps/ui/index.html apps/ui/src/useSSE.ts apps/ui/src/main.tsx apps/server/src/db.ts apps/server/src/index.ts; do
   if [ -f "$f.bak" ]; then
     cp "$f.bak" "$f"
     echo "  ✅ Restored $(basename $f)"

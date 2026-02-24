@@ -1,18 +1,26 @@
 import { useEffect, useRef } from 'react';
 
-export function useSSE(onEvent: (type: string, data: unknown) => void) {
+export function useSSE(onEvent: (type: string, data: unknown) => void, onReconnect?: () => void) {
   const onEventRef = useRef(onEvent);
   onEventRef.current = onEvent;
+  const onReconnectRef = useRef(onReconnect);
+  onReconnectRef.current = onReconnect;
 
   useEffect(() => {
     let es: EventSource;
     let reconnectTimer: ReturnType<typeof setTimeout>;
+    let wasConnected = false;
 
     function connect() {
       es = new EventSource('/api/stream');
 
       es.onopen = () => {
         console.log('[SSE] connected');
+        if (wasConnected && onReconnectRef.current) {
+          console.log('[SSE] reconnected, re-fetching board');
+          onReconnectRef.current();
+        }
+        wasConnected = true;
       };
 
       es.onerror = (e) => {

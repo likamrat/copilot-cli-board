@@ -9,5 +9,15 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Recover from module load failures (e.g., agent imports a file that doesn't exist yet)
+      window.addEventListener('error', function() {
+        var root = document.getElementById('root');
+        if (root && root.childElementCount === 0) {
+          root.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#1a1a1a;color:#aaa;font-family:monospace;font-size:14px"><div style="text-align:center"><p>Reloading board...</p></div></div>';
+          setTimeout(function() { window.location.reload(); }, 3000);
+        }
+      });
+    </script>
   </body>
 </html>
