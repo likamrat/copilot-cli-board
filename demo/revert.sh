@@ -42,13 +42,17 @@ echo "Cleaning board data..."
 SERVER_PIDS=$(lsof -ti:4800 2>/dev/null || true)
 if [ -n "$SERVER_PIDS" ]; then
   for pid in $SERVER_PIDS; do
-    kill $pid 2>/dev/null || true
+    kill -9 $pid 2>/dev/null || true
   done
-  sleep 1
+  # Wait until port is actually free
+  for i in 1 2 3 4 5; do
+    if ! lsof -ti:4800 > /dev/null 2>&1; then break; fi
+    sleep 1
+  done
   echo "  ✅ Stopped server"
 fi
 
-rm -f .copilot-cli-board/board.db
+rm -f .copilot-cli-board/board.db .copilot-cli-board/board.db-journal
 rm -f .copilot-cli-board/mcp.log
 echo "  ✅ Removed board database and logs"
 
