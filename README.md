@@ -19,6 +19,12 @@ When Copilot CLI agents work, their progress is buried in terminal output. You c
 - **Fluent UI**: modern, clean interface inspired by the Windows Fluent design system
 - **Light and dark themes**: adapts to your system theme preference
 
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) v18 or later
+- [pnpm](https://pnpm.io/) v8 or later
+- [GitHub Copilot CLI](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line) (for agent-driven board updates)
+
 ## Quick start
 
 ```bash
