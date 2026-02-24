@@ -21,7 +21,7 @@ db.pragma('foreign_keys = ON');
 db.exec(`
   CREATE TABLE IF NOT EXISTS columns (
     id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL UNIQUE,
     "order" INTEGER NOT NULL
   );
 
@@ -66,7 +66,7 @@ db.exec(`
 // Seed default columns if empty
 const colCount = db.prepare('SELECT COUNT(*) as c FROM columns').get() as { c: number };
 if (colCount.c === 0) {
-  const insert = db.prepare('INSERT INTO columns (id, name, "order") VALUES (?, ?, ?)');
+  const insert = db.prepare('INSERT OR IGNORE INTO columns (id, name, "order") VALUES (?, ?, ?)');
   for (const col of DEFAULT_COLUMNS) {
     insert.run(crypto.randomUUID(), col.name, col.order);
   }
