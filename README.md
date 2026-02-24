@@ -21,13 +21,19 @@ When Copilot CLI agents work, their progress is buried in terminal output. You c
 
 ## Prerequisites
 
-- [Node.js](https://nodejs.org) v18 or later (`winget install OpenJS.NodeJS.LTS` / `brew install node`)
-- [pnpm](https://pnpm.io) v8 or later (`npm install -g pnpm`)
+- [Node.js](https://nodejs.org) v18 or later
+- [pnpm](https://pnpm.io) v8 or later
 - [GitHub Copilot CLI](https://docs.github.com/en/copilot/using-github-copilot/using-github-copilot-in-the-command-line) (for agent-driven board updates)
 
 ## Quick start
 
 ```bash
+# Install Node.js (if not installed)
+brew install node
+
+# Install pnpm (if not installed)
+npm install -g pnpm
+
 # Install dependencies
 pnpm install
 
