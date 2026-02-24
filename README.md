@@ -40,10 +40,12 @@ apps/
   mcp/       MCP server (stdio) exposing kanban_* tools
   sim/       Simulator CLI for testing scenarios (see apps/sim/README.md)
 demo/        Demo prompt, revert script, and instructions (see demo/README.md)
+img/         Screenshots and images
 packages/
   shared/    Shared TypeScript types
 CHANGELOG.md
 CONTRIBUTING.md
+LICENSE
 ```
 
 ## Setting up the MCP server
@@ -137,9 +139,19 @@ Each card tracks which agent did the work, what skills and tools were used, and 
 | Blocked     | Stuck, needs intervention  |
 | Done        | Completed and verified     |
 
-## Card semantics
+## Card anatomy
 
-Cards represent atomic tasks with verifiable outcomes. Use verb-first titles (e.g., "Implement rate limiting", "Fix login redirect"). Split tasks when they are independent or touch different areas. Archive cards instead of deleting them.
+Each card on the board captures the full context of a task:
+
+![Card detail](img/card.png)
+
+- **Title**: verb-first description of the task (e.g., "Implement rate limiting")
+- **Description**: additional context, requirements, or notes
+- **Labels**: content tags for categorization (e.g., `backend`, `bugfix`, `frontend`)
+- **Provenance**: which agent did the work, what skills were used, what instructions were followed, and what tools were involved
+- **Event log**: timestamped audit trail of every action (moves, status changes, test results, summaries)
+
+Cards are atomic tasks with verifiable outcomes. Split tasks when they are independent or touch different areas. Archive cards instead of deleting them.
 
 ## Security
 
@@ -189,3 +201,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md).
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
