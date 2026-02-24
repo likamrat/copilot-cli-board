@@ -12,7 +12,7 @@ import type { Card } from '@copilot-cli-board/shared';
 import { useEffect, useRef, useState } from 'react';
 import { registerCard, unregisterCard } from './FlyingCardOverlay';
 
-// Column order map — set by App.tsx on board load
+// Column order map, set by App.tsx on board load
 const columnOrderMap = new Map<string, number>();
 export function setColumnOrders(columns: { id: string; order: number }[]) {
   columnOrderMap.clear();
@@ -34,7 +34,7 @@ function timeAgo(dateStr: string): string {
 
 type AnimState = 'none' | 'new' | 'moved-right' | 'moved-left' | 'updated';
 
-// Copilot CLI colors for animations — rgba ensures visibility on both light & dark
+// Copilot CLI colors for animations, rgba for visibility on light and dark
 const GLOW_SOLID = '#4ea5ca';
 const GLOW_RING = 'rgba(78, 165, 202, 0.6)';
 const GLOW_SPREAD = 'rgba(78, 165, 202, 0.35)';

@@ -36,7 +36,7 @@ app.get('/api/stream', (req, res) => {
 
 app.use(routes);
 
-// Global error handler — returns JSON instead of HTML stack traces
+// Global error handler: returns JSON instead of HTML stack traces
 app.use((err: Error, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   console.error('Unhandled error:', err.message);
   res.status(500).json({ error: 'Internal server error', message: err.message });

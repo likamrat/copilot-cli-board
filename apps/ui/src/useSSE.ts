@@ -16,7 +16,7 @@ export function useSSE(onEvent: (type: string, data: unknown) => void) {
       };
 
       es.onerror = (e) => {
-        console.error('[SSE] error — readyState:', es.readyState, e);
+        console.error('[SSE] error, readyState:', es.readyState, e);
         es.close();
         reconnectTimer = setTimeout(connect, 2000);
       };

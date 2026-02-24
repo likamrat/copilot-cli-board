@@ -62,7 +62,7 @@ sleep 2
 if curl -sf http://127.0.0.1:4800/api/board > /dev/null 2>&1; then
   echo "  ✅ Server restarted with clean database"
 else
-  echo "  ❌ Server failed to start — check manually"
+  echo "  ❌ Server failed to start. Check manually."
   exit 1
 fi
 
@@ -70,7 +70,7 @@ fi
 if curl -sf http://127.0.0.1:5173/ > /dev/null 2>&1; then
   echo "  ✅ UI is running"
 else
-  echo "  ⚠️  UI not running — starting..."
+  echo "  ⚠️  UI not running. Starting..."
   cd apps/ui
   nohup npx vite --host 127.0.0.1 > /dev/null 2>&1 &
   cd ../..
@@ -78,7 +78,7 @@ else
   if curl -sf http://127.0.0.1:5173/ > /dev/null 2>&1; then
     echo "  ✅ UI started"
   else
-    echo "  ❌ UI failed to start — check manually"
+    echo "  ❌ UI failed to start. Check manually."
     exit 1
   fi
 fi

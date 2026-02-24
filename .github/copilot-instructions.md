@@ -1,4 +1,4 @@
-# Copilot CLI Board — Agent Instructions
+# Copilot CLI Board - Agent Instructions
 
 You have access to a local Kanban board via `kanban_*` MCP tools. **Always use it to track your work.**
 
@@ -14,7 +14,7 @@ You have access to a local Kanban board via `kanban_*` MCP tools. **Always use i
 
 - **Only create a card if YOU are implementing the work.** If you are orchestrating sub-agents, let each sub-agent create its own card. Do not create cards that you will not personally work on.
 - Before creating a card, call `kanban_get_board` to check if a card for this task already exists. If it does, use that card instead of creating a duplicate.
-- One card per atomic task — split when work involves independent areas (e.g., API endpoint vs UI component).
+- One card per atomic task. Split when work involves independent areas (e.g., API endpoint vs UI component).
 
 ## Rules
 
@@ -22,7 +22,7 @@ You have access to a local Kanban board via `kanban_*` MCP tools. **Always use i
 - Use `kanban_set_labels` to categorize (e.g., frontend, backend, api, bugfix)
 - Use `kanban_record_skill_use` / `kanban_record_instruction_use` to log provenance
 
-## Required — do not skip
+## Required - do not skip
 
 - **Never skip columns.** Every card must pass through: Backlog → Planned → In Progress → Review → Done (or Blocked).
 - **Always append events** when moving to Review and Done. The event payload should describe what was accomplished.

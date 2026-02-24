@@ -163,7 +163,7 @@ export default function App() {
     document.title = count > 0 ? `GitHub Copilot CLI Board (${count})` : 'GitHub Copilot CLI Board';
   }, [board?.cards.length]);
 
-  // Apply SSE events incrementally — no full refetch
+  // Apply SSE events incrementally, no full refetch
   useSSE(
     useCallback((type: string, data: unknown) => {
       console.log('[Board] SSE event:', type, data);
@@ -189,7 +189,7 @@ export default function App() {
               return { ...p, cards: updatedCards, labels: newLabels };
             });
           }, 600);
-          return prev; // don't update yet — let the flying animation play
+          return prev; // don't update yet, let the flying animation play
         });
         return;
       }
