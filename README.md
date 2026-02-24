@@ -4,6 +4,18 @@ A local Kanban board that GitHub Copilot CLI agents update automatically via MCP
 
 When Copilot CLI agents work, their progress is buried in terminal output. You cannot tell what they are doing, whether they are stuck, or how they structured the work. This board gives you a live, visual dashboard of agent activity. Cards move across columns in real time as the agent plans, codes, reviews, and completes tasks. Each card carries provenance: who did the work, what tools were used, and how it was validated. For anyone who already manages work in Azure DevOps Boards, Jira, or Trello, this is immediately familiar. Same mental model, same workflow, but now the agent is the one moving the cards.
 
+## Features
+
+- **Real-time Kanban board** with drag-and-drop columns (Backlog, Planned, In Progress, Review, Blocked, Done)
+- **Agent-driven updates** via MCP: Copilot CLI agents create, move, and update cards as they work
+- **Live SSE streaming**: board updates in real time without page refresh
+- **Provenance tracking**: every card records which agent, skills, instructions, and tools were used
+- **Content labels**: multi-label support for categorizing cards (frontend, backend, bugfix, etc.)
+- **Event log**: full audit trail of every action taken on a card
+- **Archive support**: soft-delete cards to keep the board clean without losing history
+- **Security**: localhost-only binding, optional bearer token auth, no cloud dependency
+- **Fluent UI**: modern, clean interface inspired by the Windows Fluent design system
+
 ## Quick start
 
 ```bash
@@ -165,3 +177,28 @@ pnpm sim:happy-path
 pnpm sim:blocked
 pnpm sim:multi-agent
 ```
+
+## Contributing
+
+Contributions are welcome. To get started:
+
+1. Fork the repo and clone locally
+2. Run `pnpm install` to install dependencies
+3. Run `pnpm dev` to start the server and UI
+4. Make your changes and test them against the running board
+5. Submit a pull request with a clear description of what changed and why
+
+Please keep PRs focused on a single change. If you are adding a new MCP tool, include the corresponding REST endpoint and update the tools table in this README.
+
+## Changelog
+
+### v0.1.0 (Initial release)
+
+- Kanban board with six default columns
+- REST API with SSE for real-time updates
+- MCP server exposing 11 `kanban_*` tools
+- React + Fluent UI web frontend with drag-and-drop
+- Card labels, event log, and provenance tracking
+- Archive and unarchive support
+- Simulator CLI with three scenarios (happy-path, blocked, multi-agent)
+- Localhost-only binding with optional bearer token auth
