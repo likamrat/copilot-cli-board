@@ -53,10 +53,8 @@ rm -f .copilot-cli-board/mcp.log
 echo "  ✅ Removed board database and logs"
 
 # Restart server
-cd apps/server
-nohup npx tsx watch src/index.ts > /dev/null 2>&1 &
-cd ../..
-sleep 2
+nohup npx pnpm --filter @copilot-cli-board/server dev > /dev/null 2>&1 &
+sleep 3
 
 # Verify server is up
 if curl -sf http://127.0.0.1:4800/api/board > /dev/null 2>&1; then
@@ -71,9 +69,7 @@ if curl -sf http://127.0.0.1:5173/ > /dev/null 2>&1; then
   echo "  ✅ UI is running"
 else
   echo "  ⚠️  UI not running. Starting..."
-  cd apps/ui
-  nohup npx vite --host 127.0.0.1 > /dev/null 2>&1 &
-  cd ../..
+  nohup npx pnpm --filter @copilot-cli-board/ui dev > /dev/null 2>&1 &
   sleep 3
   if curl -sf http://127.0.0.1:5173/ > /dev/null 2>&1; then
     echo "  ✅ UI started"
