@@ -56,18 +56,20 @@ It's a pnpm monorepo with:
 - apps/server (Express + SQLite on :4800)
 - apps/ui (React + Fluent UI + Vite on :5173)
 - apps/mcp (MCP server exposing kanban_* tools)
-- apps/sim (simulator and demo scripts)
+- apps/sim (simulator)
 - packages/shared (shared types)
 
 Please check if the server (:4800) and UI (:5173) are running. If not, start them:
-- Server: cd apps/server && npx tsx watch src/index.ts (bind 127.0.0.1:4800, detached)
-- UI: cd apps/ui && npx vite --host 127.0.0.1 (bind 127.0.0.1:5173, detached)
+- Server: npx pnpm --filter @copilot-cli-board/server dev (detached)
+- UI: npx pnpm --filter @copilot-cli-board/ui dev (detached)
 
 Verify both respond (curl), then confirm the board is ready.
 ```
 
 ## Troubleshooting
 
+- **UI shows "Reloading board..." then stops**: The agent may have introduced a temporary error. Wait for the agent to finish, then refresh. If it persists, run `bash demo/revert.sh`
 - **UI shows blank page after demo**: Run `bash demo/revert.sh` to restore clean source files
-- **Cards still on board after revert**: There may be multiple server processes. The revert script kills all processes on :4800 before restarting
+- **Cards still on board after revert**: The revert script force-stops all processes on :4800 and waits for the port to be free before restarting
+- **"Readonly database" error**: The server must be started via `pnpm dev` or `pnpm --filter @copilot-cli-board/server dev`, not by running tsx directly from the apps/server directory
 - **MCP logs**: Check `.copilot-cli-board/mcp.log` for tool call history and errors
