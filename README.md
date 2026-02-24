@@ -180,25 +180,8 @@ pnpm sim:multi-agent
 
 ## Contributing
 
-Contributions are welcome. To get started:
-
-1. Fork the repo and clone locally
-2. Run `pnpm install` to install dependencies
-3. Run `pnpm dev` to start the server and UI
-4. Make your changes and test them against the running board
-5. Submit a pull request with a clear description of what changed and why
-
-Please keep PRs focused on a single change. If you are adding a new MCP tool, include the corresponding REST endpoint and update the tools table in this README.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Changelog
 
-### v0.1.0 (Initial release)
-
-- Kanban board with six default columns
-- REST API with SSE for real-time updates
-- MCP server exposing 11 `kanban_*` tools
-- React + Fluent UI web frontend with drag-and-drop
-- Card labels, event log, and provenance tracking
-- Archive and unarchive support
-- Simulator CLI with three scenarios (happy-path, blocked, multi-agent)
-- Localhost-only binding with optional bearer token auth
+See [CHANGELOG.md](CHANGELOG.md).
