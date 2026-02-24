@@ -40,6 +40,8 @@ apps/
 demo/        Demo prompt, revert script, and instructions (see demo/README.md)
 packages/
   shared/    Shared TypeScript types
+CHANGELOG.md
+CONTRIBUTING.md
 ```
 
 ## Setting up the MCP server
