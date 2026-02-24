@@ -27,17 +27,21 @@ When Copilot CLI agents work, their progress is buried in terminal output. You c
 
 ## Quick start
 
+Install [Node.js](https://nodejs.org) v18+ if not already installed:
+
 ```bash
-# Install Node.js (if not installed): https://nodejs.org
-# macOS: brew install node | Ubuntu/WSL: sudo apt install nodejs npm
+# macOS
+brew install node
 
-# Install pnpm (if not installed)
+# Ubuntu / WSL
+sudo apt install nodejs npm
+```
+
+Then:
+
+```bash
 npm install -g pnpm
-
-# Install dependencies
 pnpm install
-
-# Start the board server and web UI
 pnpm dev
 ```
 
