@@ -40,9 +40,9 @@ sudo apt install nodejs npm
 Then:
 
 ```bash
-npm install -g pnpm          # Install pnpm package manager
-pnpm install                  # Install all dependencies for server, UI, MCP, and simulator
-pnpm dev                      # Start the board server (port 4800) and web UI (port 5173)
+npm install -g pnpm  # Install pnpm package manager
+pnpm install         # Install all dependencies for server, UI, MCP, and simulator
+pnpm dev             # Start the board server (port 4800) and web UI (port 5173)
 ```
 
 - Board UI: http://127.0.0.1:5173
