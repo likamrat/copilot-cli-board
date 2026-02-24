@@ -28,8 +28,8 @@ When Copilot CLI agents work, their progress is buried in terminal output. You c
 ## Quick start
 
 ```bash
-# Install Node.js (if not installed)
-brew install node
+# Install Node.js (if not installed): https://nodejs.org
+# macOS: brew install node | Ubuntu/WSL: sudo apt install nodejs npm
 
 # Install pnpm (if not installed)
 npm install -g pnpm
