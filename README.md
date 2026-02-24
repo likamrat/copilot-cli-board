@@ -2,7 +2,7 @@
 
 A local Kanban board that GitHub Copilot CLI agents update automatically via MCP while they work. You give the agent a task, and the board shows you what it is doing in real time: cards appear, move across columns, and carry a full audit trail of what happened and why.
 
-![GitHub Copilot CLI Board](img/board.png)
+![GitHub Copilot CLI Board](img/board.gif)
 
 When Copilot CLI agents work, their progress is buried in terminal output. You cannot tell what they are doing, whether they are stuck, or how they structured the work. This board gives you a live, visual dashboard of agent activity. Cards move across columns in real time as the agent plans, codes, reviews, and completes tasks. Each card carries provenance: who did the work, what tools were used, and how it was validated. For anyone who already manages work in Azure DevOps Boards, Jira, or Trello, this is immediately familiar. Same mental model, same workflow, but now the agent is the one moving the cards.
 
