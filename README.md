@@ -17,6 +17,7 @@ When Copilot CLI agents work, their progress is buried in terminal output. You c
 - **Archive support**: soft-delete cards to keep the board clean without losing history
 - **Security**: localhost-only binding, optional bearer token auth, no cloud dependency
 - **Fluent UI**: modern, clean interface inspired by the Windows Fluent design system
+- **Light and dark themes**: adapts to your system theme preference
 
 ## Quick start
 
@@ -102,8 +103,8 @@ Copy `.github/copilot-instructions.md` into any repo where you want agents to us
 
 ## MCP tools
 
-| Tool                             | Description                      |
-|----------------------------------|----------------------------------|
+| Tool                             | Description                       |
+|----------------------------------|-----------------------------------|
 | `kanban_get_board`               | Get full board snapshot           |
 | `kanban_create_card`             | Create a new card                 |
 | `kanban_move_card`               | Move card to a column             |
