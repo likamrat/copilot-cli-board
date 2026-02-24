@@ -11,13 +11,23 @@
     <script type="module" src="/src/main.tsx"></script>
     <script>
       // Recover from module load failures (e.g., agent imports a file that doesn't exist yet)
+      // Stop retrying after 3 attempts to avoid infinite reload loops
       window.addEventListener('error', function() {
         var root = document.getElementById('root');
         if (root && root.childElementCount === 0) {
-          root.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#1a1a1a;color:#aaa;font-family:monospace;font-size:14px"><div style="text-align:center"><p>Reloading board...</p></div></div>';
-          setTimeout(function() { window.location.reload(); }, 3000);
+          var retries = parseInt(sessionStorage.getItem('_reload_retries') || '0');
+          if (retries < 3) {
+            sessionStorage.setItem('_reload_retries', String(retries + 1));
+            root.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#1a1a1a;color:#aaa;font-family:monospace;font-size:14px"><div style="text-align:center"><p>Reloading board... (attempt ' + (retries + 1) + '/3)</p></div></div>';
+            setTimeout(function() { window.location.reload(); }, 3000);
+          } else {
+            sessionStorage.removeItem('_reload_retries');
+            root.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;background:#1a1a1a;color:#ff6b6b;font-family:monospace;font-size:14px"><div style="text-align:center"><p>Board failed to load. The agent may still be editing files.</p><p style="color:#aaa;margin-top:8px">Refresh manually when ready, or run: bash demo/revert.sh</p></div></div>';
+          }
         }
       });
+      // Clear retry counter on successful load
+      window.addEventListener('load', function() { sessionStorage.removeItem('_reload_retries'); });
     </script>
   </body>
 </html>
