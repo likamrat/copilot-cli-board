@@ -40,9 +40,9 @@ sudo apt install nodejs npm
 Then:
 
 ```bash
-npm install -g pnpm
-pnpm install
-pnpm dev
+npm install -g pnpm          # Install pnpm package manager
+pnpm install                  # Install all dependencies for server, UI, MCP, and simulator
+pnpm dev                      # Start the board server (port 4800) and web UI (port 5173)
 ```
 
 - Board UI: http://127.0.0.1:5173
@@ -93,6 +93,8 @@ Add to `~/.copilot/mcp-config.json`:
 ```
 
 Replace `/path/to/copilot-cli-board` with the absolute path to this project.
+
+> **Note:** After adding the MCP server config, start a new Copilot CLI session for the changes to take effect.
 
 ### Option 3: Project-level config
 
