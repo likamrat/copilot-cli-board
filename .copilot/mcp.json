@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "copilot-cli-board": {
+      "type": "stdio",
+      "command": "/home/lior/repos/copilot-cli-board/apps/mcp/node_modules/.bin/tsx",
+      "args": ["/home/lior/repos/copilot-cli-board/apps/mcp/src/index.ts"],
+      "env": {
+        "COPILOT_CLI_BOARD_URL": "http://127.0.0.1:4800"
+      }
+    }
+  }
+}

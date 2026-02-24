@@ -1,0 +1,27 @@
+{
+  "name": "copilot-cli-board",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -n server,ui -c blue,green \"pnpm --filter @copilot-cli-board/server dev\" \"pnpm --filter @copilot-cli-board/ui dev\"",
+    "dev:mcp": "pnpm --filter @copilot-cli-board/mcp dev",
+    "sim:happy-path": "pnpm --filter @copilot-cli-board/sim start -- happy-path",
+    "sim:blocked": "pnpm --filter @copilot-cli-board/sim start -- blocked",
+    "sim:multi-agent": "pnpm --filter @copilot-cli-board/sim start -- multi-agent",
+    "sim:happy-path:assert": "pnpm --filter @copilot-cli-board/sim start -- happy-path --assert",
+    "sim:blocked:assert": "pnpm --filter @copilot-cli-board/sim start -- blocked --assert",
+    "sim:multi-agent:assert": "pnpm --filter @copilot-cli-board/sim start -- multi-agent --assert"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}
