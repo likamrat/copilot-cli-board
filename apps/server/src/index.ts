@@ -3,7 +3,6 @@ import cors from 'cors';
 import routes from './routes.js';
 import { addClient } from './sse.js';
 import { authMiddleware } from './auth.js';
-import db from './db.js';
 
 const PORT = Number(process.env.PORT ?? 4800);
 const UI_ORIGIN = process.env.UI_ORIGIN ?? 'http://localhost:5173';
@@ -51,20 +50,3 @@ app.listen(PORT, '127.0.0.1', () => {
    └─ Data:   ${process.env.DATA_DIR ?? '.copilot-cli-board/'}
 `);
 });
-
-// Checkpoint WAL every 30s so data survives tsx watch restarts
-const walTimer = setInterval(() => {
-  try { db.pragma('wal_checkpoint(PASSIVE)'); } catch {}
-}, 30_000);
-
-// Graceful shutdown: checkpoint WAL and close DB before exit
-function shutdown() {
-  clearInterval(walTimer);
-  try {
-    db.pragma('wal_checkpoint(TRUNCATE)');
-    db.close();
-  } catch {}
-  process.exit(0);
-}
-process.on('SIGTERM', shutdown);
-process.on('SIGINT', shutdown);

@@ -15,7 +15,7 @@ const DB_PATH = path.join(DATA_DIR, 'board.db');
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
 const db: BetterSqlite3.Database = new Database(DB_PATH);
-db.pragma('journal_mode = WAL');
+db.pragma('journal_mode = DELETE');
 db.pragma('foreign_keys = ON');
 
 db.exec(`
